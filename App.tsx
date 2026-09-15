@@ -1,29 +1,22 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
-import Header from './components/Header'; 
-import BookCard from './components/BookCard';
-
-const SAMPLE_BOOKS = [
+import { StyleSheet, SafeAreaView, View } from 'react-native';
+import Header from './components/Header';   
+import BookGrid from './components/BookGrid'; 
+import { Book } from './components/BookCard'; 
+const SAMPLE_BOOKS: Book[] = [
   {
     id: '1',
     title: 'Đắc Nhân Tâm',
     author: 'Dale Carnegie',
     price: '86.000 đ',
-    imageUrl: 'https://via.placeholder.com/80x110/4B0082/FFFFFF?text=Book1',
+    imageUrl: 'https://picsum.photos/id/10/200/300',
   },
   {
     id: '2',
-    title: 'Nhà Giả Kim (Tái Bản 2020) - Tác phẩm kinh điển thế giới',
+    title: 'Nhà Giả Kim (Tái Bản 2020)',
     author: 'Paulo Coelho',
     price: '79.000 đ',
-    imageUrl: 'https://via.placeholder.com/80x110/4B0082/FFFFFF?text=Book2',
-  },
-  {
-    id: '3',
-    title: 'Tuổi Trẻ Đáng Giá Bao Nhiêu',
-    author: 'Rosie Nguyễn',
-    price: '90.000 đ',
-    imageUrl: 'https://via.placeholder.com/80x110/4B0082/FFFFFF?text=Book3',
+    imageUrl: 'https://picsum.photos/id/24/200/300',
   },
 ];
 
@@ -31,11 +24,9 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
-      <ScrollView style={styles.content}>
-        {SAMPLE_BOOKS.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </ScrollView>
+      <View style={{ flex: 1 }}>
+        <BookGrid books={SAMPLE_BOOKS} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -44,9 +35,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-  },
-  content: {
-    flex: 1,
-    padding: 16,
   },
 });
